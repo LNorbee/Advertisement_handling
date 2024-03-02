@@ -121,13 +121,15 @@ public class WebController {
     public String editAdvertisement(@ModelAttribute("ad") Ad ad,
                                     @ModelAttribute("id") Long id) {
         adService.modifyAd(id, ad);
-        return "redirect:/advertisements";
+        return "redirect:/users";
     }
 
     //DELETE----//
     @PostMapping("/ad_delete")
-    public String deleteAd(@ModelAttribute("id") Long id) {
+    public String deleteAd(@ModelAttribute("id") Long id,
+                           @ModelAttribute("userName") String userName) {
         adService.deleteAd(id);
-        return "redirect:/advertisement";
+        return "redirect:/users";
+//        return "redirect:/advertisements/{" + userName + "}";
     }
 }
